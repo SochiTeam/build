@@ -46,13 +46,11 @@ endif
 # Shared library
 ifeq ($(TARGET_TYPE),shared_library)
 _EXT := .$(SO)
-_TYPE_VALID := true
 _LDFLAGS := $(_LDFLAGS) -shared
 endif
 
 # Binary
 ifeq ($(TARGET_TYPE),binary)
-_TYPE_VALID := true
 endif
 
 _OUT_FILE := $(TARGET_OUT)/$(TARGET_NAME)$(_EXT)

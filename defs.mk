@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Definitions
-ifneq (SystemRoot,)
+ifdef SystemRoot
 WIN32 := true
 endif
 
