@@ -36,7 +36,7 @@ _TARGET_OBJ_DIR := obj/$(TARGET_NAME)
 _CFLAGS := -c $(TARGET_CFLAGS) $(addprefix -I,$(TARGET_INCLUDE_PATH))
 _LDFLAGS := $(TARGET_LDFLAGS)
 _SRC := $(TARGET_SRC)
-_OBJ := $(addprefix obj/$(TARGET_NAME)/,$(_SRC:.cpp=.o))
+_OBJ := $(addprefix obj/$(TARGET_NAME)/,$(addsuffix .o,$(_SRC)))
 _EXT :=
 
 ifeq ($(TARGET_TYPE),)
@@ -83,7 +83,7 @@ $2: $1
 endef
 
 $(foreach src,$(_SRC), \
-	$(eval $(call make_obj_target,$(src),$(addprefix $(_TARGET_OBJ_DIR)/,$(src:.cpp=.o)))) \
+	$(eval $(call make_obj_target,$(src),$(addprefix $(_TARGET_OBJ_DIR)/,$(src).o))) \
 )
 $(eval $(call make_target))
 
